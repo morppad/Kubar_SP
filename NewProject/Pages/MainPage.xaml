@@ -1,0 +1,74 @@
+﻿<Page x:Class="NewProject.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:NewProject.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainPage">
+
+    <Grid>
+        <Label 
+            x:Name="lblUserRole"
+            Content="Текущая роль: "
+            VerticalAlignment="Top" 
+            HorizontalAlignment="Right"   
+            Margin="0,50,10,0"     
+            Width="300"
+            />
+        
+        <StackPanel Margin="0,100,0,0">
+            <Button 
+                x:Name="AddApplication"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                Width="200"
+                Height="40"
+                Click="AddApplication_Click"
+                Content="Добавить заявку"
+                />  
+
+            <Button
+                x:Name="EditApplication"
+                VerticalAlignment="Top"  
+                HorizontalAlignment="Center"
+                Width="200"    
+                Height="40"   
+                Click="EditApplication_Click"
+                Content="Изменить заявку"
+                />
+
+            <Button 
+                x:Name="TrackingApplication"      
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                Width="200"
+                Height="40"
+                Click="TrackingApplication_Click"       
+                Content="Отслеживание заявок"
+                />
+
+            <Button 
+                x:Name="Statistic"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                Width="200"
+                Height="40"
+                Click="Statistic_Click"
+                Content="Посмотреть статистику"
+                />
+
+            <Button 
+                x:Name="MarkUp"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                Width="200"
+                Height="40"
+                Click="MarkUp_Click"
+                Content="Оцените нас"
+                />
+        </StackPanel>
+ 
+    </Grid>
+</Page>

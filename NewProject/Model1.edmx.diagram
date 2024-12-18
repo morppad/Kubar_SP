@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a91f20b6004f4126a92ef57b78ebfed0" Name="Diagram1">
+        <EntityTypeShape EntityType="Kubar_AModel.Application" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Kubar_AModel.AppStatus" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Kubar_AModel.Client" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Kubar_AModel.DeffectType" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Kubar_AModel.Equipment" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Kubar_AModel.Roles" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Kubar_AModel.Worker" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <AssociationConnector Association="Kubar_AModel.FK_Application_AppStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="Kubar_AModel.FK_Application_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="Kubar_AModel.FK_Application_DeffectType" ManuallyRouted="false" />
+        <AssociationConnector Association="Kubar_AModel.FK_Application_Equipment" ManuallyRouted="false" />
+        <AssociationConnector Association="Kubar_AModel.FK_Application_Worker" ManuallyRouted="false" />
+        <AssociationConnector Association="Kubar_AModel.FK__Worker__WorkerRo__47DBAE45" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

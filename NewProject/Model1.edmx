@@ -1,0 +1,457 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Kubar_AModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateOfAdd" Type="date" Nullable="false" />
+          <Property Name="DeffectType" Type="int" Nullable="false" />
+          <Property Name="AppDescription" Type="varchar" MaxLength="1000" />
+          <Property Name="Client" Type="int" Nullable="false" />
+          <Property Name="AppStatus" Type="int" Nullable="false" />
+          <Property Name="Responsible" Type="int" />
+          <Property Name="DateOfEnd" Type="date" />
+          <Property Name="Comment" Type="varchar(max)" />
+          <Property Name="Equipment" Type="int" Nullable="false" />
+          <Property Name="DueDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AppStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientName" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeffectType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeffectName" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="DeffectDescription" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EquipmentName" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Worker">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkerName" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="WorkerLogin" Type="varchar" MaxLength="159" Nullable="false" />
+          <Property Name="WorkerPassword" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="WorkerRole" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Worker__WorkerRo__47DBAE45">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Worker">
+              <PropertyRef Name="WorkerRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_AppStatus">
+          <End Role="AppStatus" Type="Self.AppStatus" Multiplicity="1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="AppStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_DeffectType">
+          <End Role="DeffectType" Type="Self.DeffectType" Multiplicity="1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeffectType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="DeffectType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_Equipment">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="Equipment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_Worker">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="Responsible" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище Kubar_AModelContainer">
+          <EntitySet Name="Application" EntityType="Self.Application" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppStatus" EntityType="Self.AppStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeffectType" EntityType="Self.DeffectType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Worker__WorkerRo__47DBAE45" Association="Self.FK__Worker__WorkerRo__47DBAE45">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Worker" EntitySet="Worker" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_AppStatus" Association="Self.FK_Application_AppStatus">
+            <End Role="AppStatus" EntitySet="AppStatus" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_Client" Association="Self.FK_Application_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_DeffectType" Association="Self.FK_Application_DeffectType">
+            <End Role="DeffectType" EntitySet="DeffectType" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_Equipment" Association="Self.FK_Application_Equipment">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_Worker" Association="Self.FK_Application_Worker">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Kubar_AModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateOfAdd" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DeffectType" Type="Int32" Nullable="false" />
+          <Property Name="AppDescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Client" Type="Int32" Nullable="false" />
+          <Property Name="AppStatus" Type="Int32" Nullable="false" />
+          <Property Name="Responsible" Type="Int32" />
+          <Property Name="DateOfEnd" Type="DateTime" Precision="0" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Equipment" Type="Int32" Nullable="false" />
+          <Property Name="DueDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="AppStatus1" Relationship="Self.FK_Application_AppStatus" FromRole="Application" ToRole="AppStatus" />
+          <NavigationProperty Name="Client1" Relationship="Self.FK_Application_Client" FromRole="Application" ToRole="Client" />
+          <NavigationProperty Name="DeffectType1" Relationship="Self.FK_Application_DeffectType" FromRole="Application" ToRole="DeffectType" />
+          <NavigationProperty Name="Equipment1" Relationship="Self.FK_Application_Equipment" FromRole="Application" ToRole="Equipment" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK_Application_Worker" FromRole="Application" ToRole="Worker" />
+        </EntityType>
+        <EntityType Name="AppStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Application" Relationship="Self.FK_Application_AppStatus" FromRole="AppStatus" ToRole="Application" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Application" Relationship="Self.FK_Application_Client" FromRole="Client" ToRole="Application" />
+        </EntityType>
+        <EntityType Name="DeffectType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeffectName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DeffectDescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Application" Relationship="Self.FK_Application_DeffectType" FromRole="DeffectType" ToRole="Application" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EquipmentName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Application" Relationship="Self.FK_Application_Equipment" FromRole="Equipment" ToRole="Application" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK__Worker__WorkerRo__47DBAE45" FromRole="Roles" ToRole="Worker" />
+        </EntityType>
+        <EntityType Name="Worker">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkerName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WorkerLogin" Type="String" MaxLength="159" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WorkerPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WorkerRole" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Application" Relationship="Self.FK_Application_Worker" FromRole="Worker" ToRole="Application" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK__Worker__WorkerRo__47DBAE45" FromRole="Worker" ToRole="Roles" />
+        </EntityType>
+        <Association Name="FK_Application_AppStatus">
+          <End Role="AppStatus" Type="Self.AppStatus" Multiplicity="1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="AppStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_DeffectType">
+          <End Role="DeffectType" Type="Self.DeffectType" Multiplicity="1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeffectType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="DeffectType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_Equipment">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="Equipment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_Worker">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="Responsible" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Worker__WorkerRo__47DBAE45">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Worker">
+              <PropertyRef Name="WorkerRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Application" EntityType="Self.Application" />
+          <EntitySet Name="AppStatus" EntityType="Self.AppStatus" />
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="DeffectType" EntityType="Self.DeffectType" />
+          <EntitySet Name="Equipment" EntityType="Self.Equipment" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="Worker" EntityType="Self.Worker" />
+          <AssociationSet Name="FK_Application_AppStatus" Association="Self.FK_Application_AppStatus">
+            <End Role="AppStatus" EntitySet="AppStatus" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_Client" Association="Self.FK_Application_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_DeffectType" Association="Self.FK_Application_DeffectType">
+            <End Role="DeffectType" EntitySet="DeffectType" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_Equipment" Association="Self.FK_Application_Equipment">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_Worker" Association="Self.FK_Application_Worker">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Worker__WorkerRo__47DBAE45" Association="Self.FK__Worker__WorkerRo__47DBAE45">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Worker" EntitySet="Worker" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Kubar_AModelContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Application">
+            <EntityTypeMapping TypeName="Kubar_AModel.Application">
+              <MappingFragment StoreEntitySet="Application">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DateOfAdd" ColumnName="DateOfAdd" />
+                <ScalarProperty Name="DeffectType" ColumnName="DeffectType" />
+                <ScalarProperty Name="AppDescription" ColumnName="AppDescription" />
+                <ScalarProperty Name="Client" ColumnName="Client" />
+                <ScalarProperty Name="AppStatus" ColumnName="AppStatus" />
+                <ScalarProperty Name="Responsible" ColumnName="Responsible" />
+                <ScalarProperty Name="DateOfEnd" ColumnName="DateOfEnd" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Equipment" ColumnName="Equipment" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppStatus">
+            <EntityTypeMapping TypeName="Kubar_AModel.AppStatus">
+              <MappingFragment StoreEntitySet="AppStatus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="Kubar_AModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeffectType">
+            <EntityTypeMapping TypeName="Kubar_AModel.DeffectType">
+              <MappingFragment StoreEntitySet="DeffectType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DeffectName" ColumnName="DeffectName" />
+                <ScalarProperty Name="DeffectDescription" ColumnName="DeffectDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipment">
+            <EntityTypeMapping TypeName="Kubar_AModel.Equipment">
+              <MappingFragment StoreEntitySet="Equipment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EquipmentName" ColumnName="EquipmentName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="Kubar_AModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Worker">
+            <EntityTypeMapping TypeName="Kubar_AModel.Worker">
+              <MappingFragment StoreEntitySet="Worker">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WorkerName" ColumnName="WorkerName" />
+                <ScalarProperty Name="WorkerLogin" ColumnName="WorkerLogin" />
+                <ScalarProperty Name="WorkerPassword" ColumnName="WorkerPassword" />
+                <ScalarProperty Name="WorkerRole" ColumnName="WorkerRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

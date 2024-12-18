@@ -1,0 +1,197 @@
+﻿<Page x:Class="NewProject.Pages.AddAppPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:NewProject.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="800"
+      Title="AddAppPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid
+            Grid.Row="0"
+            >
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel
+                Grid.Column="0"
+                Margin="0,50,0,0"
+                >
+                <Label 
+                    x:Name="lblAppNum"
+                    HorizontalAlignment="Right"
+                    HorizontalContentAlignment="Right"
+                    VerticalAlignment="Top"
+                    Content="Номер заявки"
+                    />
+
+                <Label 
+                    x:Name="lblDateOffAdd"
+                    HorizontalAlignment="Right"
+                    HorizontalContentAlignment="Right"
+                    VerticalAlignment="Top"
+                    Content="Дата подачи заявки"
+                    />
+
+                <Label 
+                    x:Name="lblClient"
+                    HorizontalAlignment="Right"
+                    HorizontalContentAlignment="Right"
+                    VerticalAlignment="Top"
+                    Content="Клиент"
+                    />
+
+                <Label 
+                    x:Name="lblDueDate"
+                    HorizontalAlignment="Right"
+                    HorizontalContentAlignment="Right"
+                    VerticalAlignment="Top"
+                    Content="Срок выполнения"
+                    />  
+
+                <Label 
+                    x:Name="lblEquipment"
+                    HorizontalAlignment="Right"
+                    HorizontalContentAlignment="Right"
+                    VerticalAlignment="Top"
+                    Content="Оборудование"
+                    />
+
+                <Label 
+                    x:Name="lblDeffectType"
+                    HorizontalAlignment="Right"
+                    HorizontalContentAlignment="Right"
+                    VerticalAlignment="Top"
+                    Content="Тип неисправности"
+                    />
+
+                <Label 
+                    x:Name="lblDescription"
+                    HorizontalAlignment="Right"
+                    HorizontalContentAlignment="Right"
+                    VerticalAlignment="Top"
+                    Content="Описание"
+                    />
+
+                <Label 
+                    x:Name="lblStatus"
+                    HorizontalAlignment="Right"
+                    HorizontalContentAlignment="Right"
+                    VerticalAlignment="Top"
+                    Content="Статус заявки"
+                    />
+
+                <Label 
+                    x:Name="lblWorker"
+                    HorizontalAlignment="Right"
+                    HorizontalContentAlignment="Right"
+                    VerticalAlignment="Top"
+                    Content="Ответственный"
+                    />
+
+                <Label 
+                    x:Name="lblComment"
+                    HorizontalAlignment="Right"
+                    HorizontalContentAlignment="Right"
+                    VerticalAlignment="Top"
+                    Content="Комментарий"
+                    />
+            </StackPanel>
+            
+            <StackPanel
+                Grid.Column="1"
+                Margin="0,50,0,0"
+                >
+                <TextBox 
+                    x:Name="tbAppNum"
+                    HorizontalAlignment="Left"
+                    HorizontalContentAlignment="Left"
+                    VerticalAlignment="Top"
+                    />
+
+                <TextBox 
+                    x:Name="tbDateOfAdd"
+                    HorizontalAlignment="Left"
+                    HorizontalContentAlignment="Left"
+                    VerticalAlignment="Top"
+                    />
+
+                <ComboBox 
+                    x:Name="cbClient"
+                    HorizontalAlignment="Left"
+                    HorizontalContentAlignment="Left"
+                    VerticalAlignment="Top"
+                    />
+
+                <TextBox 
+                    x:Name="tbDueDate"
+                    HorizontalAlignment="Left"
+                    HorizontalContentAlignment="Left"
+                    VerticalAlignment="Top"
+                    />
+
+                <ComboBox 
+                    x:Name="cbEquipment"
+                    HorizontalAlignment="Left"
+                    HorizontalContentAlignment="Left"
+                    VerticalAlignment="Top"
+                    />
+
+                <ComboBox 
+                    x:Name="cbDeffectType"
+                    HorizontalAlignment="Left"
+                    HorizontalContentAlignment="Left"
+                    VerticalAlignment="Top"
+                    />
+
+                <TextBox 
+                    x:Name="tbDescription"
+                    HorizontalAlignment="Left"
+                    HorizontalContentAlignment="Left"
+                    VerticalAlignment="Top"
+                    />
+
+                <ComboBox 
+                    x:Name="cbAppStatus"
+                    HorizontalAlignment="Left"
+                    HorizontalContentAlignment="Left"
+                    VerticalAlignment="Top"
+                    />
+
+                <ComboBox 
+                    x:Name="cbWorker"
+                    HorizontalAlignment="Left"
+                    HorizontalContentAlignment="Left"
+                    VerticalAlignment="Top"
+                    />
+
+                <TextBox 
+                    x:Name="tbComment"
+                    HorizontalAlignment="Left"
+                    HorizontalContentAlignment="Left"
+                    VerticalAlignment="Top"
+                    />
+            </StackPanel>
+        </Grid>
+
+        <Button 
+            x:Name="btnAddApplication"
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Width="200"
+            Height="30"
+            Click="btnAddApplication_Click"
+            Content="Оформить заявку" 
+        />
+    </Grid>
+</Page>
